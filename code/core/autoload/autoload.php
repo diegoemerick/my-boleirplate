@@ -5,6 +5,7 @@ class Autoload{
     private $autoloadable = [];
 
     public function register($name, $loader = false){
+        var_dump($name) ;
         if( is_callable($loader) || $loader == false){
             $this->autoloadable[$name] = $loader;
             return;
@@ -21,6 +22,6 @@ class Autoload{
         if( file_exists($filepath) ){
             return require($filepath);
         }
-        throw new Exception($name.' is not loaded or registred for autoloading');
+        throw new \Exception($name.' is not loaded or registred for autoloading');
     }
 }
