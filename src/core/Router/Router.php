@@ -1,6 +1,8 @@
 <?php
 
-class Router{
+namespace Cpf\Core\Router;
+
+class Router {
 
     private $routes = [];
     private $notFound;
@@ -22,7 +24,13 @@ class Router{
     public function dispatch(){
         foreach ($this->routes as $url => $action) {
             if( $url == $_SERVER['REQUEST_URI'] ){
-                return $action();
+                if(is_callable($action)) return $action();
+
+                $actionArr = explode('#', $action);
+                $controller = 'Gcpf\\App\\Controllers\\'.$actionArr[0];
+                $method = $actionArr[1];
+
+                return (new $controller)->$method();
             }
         }
         call_user_func_array($this->notFound,[$_SERVER['REQUEST_URI']]);
