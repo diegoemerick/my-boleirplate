@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Service;
+namespace Gcpf\Domain\Service;
 
-use Domain\Model\healthCheck;
+use Gcpf\Domain\Model\HealthCheck;
 
 class HealthCheckService
 {

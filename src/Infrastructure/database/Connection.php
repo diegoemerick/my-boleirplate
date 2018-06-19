@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Database;
+namespace Gcpf\Infrastructure\Database;
 
 class Connection
 {
@@ -8,7 +8,7 @@ class Connection
 
     public function __construct()
     {
-        $path = 'sqlite:/core/database/cpfdatabase.sqlite';
+        $path = 'sqlite:/Core/database/cpfdatabase.sqlite';
         $this->db = new \PDO($path) or die("cannot connect in database");
     }
 

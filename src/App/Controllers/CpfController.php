@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace Gcpf\App\Controllers;
 
-use App\Domain\Service\cpfService;
-use App\Infrastructure\Repository\cpfRepository;
+use Gcpf\Domain\Service\cpfService;
+use Gcpf\Infrastructure\Repository\cpfRepository;
 
 class CpfController
 {

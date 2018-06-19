@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Factory;
+namespace Gcpf\Domain\Factory;
 
-use App\Domain\Model\cpf;
+use Gcpf\Domain\Model\cpf;
 
 class cpfFactory
 {

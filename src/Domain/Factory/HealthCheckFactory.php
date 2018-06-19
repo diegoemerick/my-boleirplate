@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Factory;
+namespace Gcpf\Domain\Factory;
 
-use App\Domain\Model\healthCheck;
+use Gcpf\Domain\Model\HealthCheck;
 
-class healthCheckFactory
+class HealthCheckFactory
 {
     /**
      * @param healthCheck $healthCheck

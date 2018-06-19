@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Model;
+namespace Gcpf\Domain\Model;
 
 class HealthCheck
 {

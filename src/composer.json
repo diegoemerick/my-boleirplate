@@ -1,7 +1,7 @@
 {
   "autoload":{
     "psr-4":{
-      "Gcpf\\": "./src"
+      "Gcpf\\": "./"
     }
   }
 }

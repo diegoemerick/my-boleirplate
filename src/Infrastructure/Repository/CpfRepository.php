@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Repository;
+namespace Gcpf\Infrastructure\Repository;
 
-use Infrastructure\Database\Connection;
+use Gcpf\Infrastructure\Database\Connection;
 
 class CpfRepository implements CpfRepositoryInterface
 {

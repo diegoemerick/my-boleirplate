@@ -2,12 +2,12 @@
 
 namespace Gcpf\App\Controllers;
 
-use App\Domain\Factory\HealthCheckFactory;
-use App\Domain\Service\HealthCheckService;
+use Gcpf\Domain\Factory\HealthCheckFactory;
+use Gcpf\Domain\Service\HealthCheckService;
 
 /**
  * Class HealthCheckController
- * @package App\Controllers
+ * @package 2\Controllers
  */
 class HealthCheckController
 {

@@ -16,7 +16,7 @@ class ComposerStaticInitb8ee52387abc5324aa8232a92416f50a
     public static $prefixDirsPsr4 = array (
         'Gcpf\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/',
         ),
     );
 

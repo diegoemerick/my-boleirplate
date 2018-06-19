@@ -1,6 +1,6 @@
 <?php
 
-namespace Cpf\Core\Router;
+namespace Gcpf\Core\Router;
 
 class Router {
 

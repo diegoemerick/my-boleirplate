@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Service;
+namespace Gcpf\Domain\Service;
 
-use Domain\Factory\cpfFactory;
-use Domain\Model\cpf;
+use Gcpf\Domain\Factory\cpfFactory;
+use Gcpf\Domain\Model\cpf;
 
 class CpfService
 {
