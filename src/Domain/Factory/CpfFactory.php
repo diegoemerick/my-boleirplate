@@ -2,18 +2,18 @@
 
 namespace Gcpf\Domain\Factory;
 
-use Gcpf\Domain\Model\cpf;
+use Gcpf\Domain\Model\Cpf;
 
-class cpfFactory
+class CpfFactory
 {
     /**
      * @param $number
      * @param bool $block
      * @return cpf
      */
-    public function buildStoreBlackList($number, $block = true): cpf
+    public function buildStoreBlackList($number, $block = true): Cpf
     {
-        $storeCpf = new cpf();
+        $storeCpf = new Cpf();
         $storeCpf->setNumber($number);
         $storeCpf->setBlock($block);
 
@@ -21,10 +21,10 @@ class cpfFactory
     }
 
     /**
-     * @param cpf $cpf
-     * @return array
+     * @param Cpf $cpf
+     * @return string
      */
-    public function responseCpf(cpf $cpf): array
+    public function responseCpf(cpf $cpf): string
     {
         $reponse = [
             'cpf'=> $cpf->getNumber(),

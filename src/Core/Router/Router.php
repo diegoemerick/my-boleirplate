@@ -22,17 +22,23 @@ class Router {
     }
 
     public function dispatch(){
+
+        $params = $_POST;
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $params = $_GET;
+        }
+
         foreach ($this->routes as $url => $action) {
-            if( $url == $_SERVER['REQUEST_URI'] ){
+            if( $url == '/'.$_GET["param"] ){
                 if(is_callable($action)) return $action();
 
                 $actionArr = explode('#', $action);
                 $controller = 'Gcpf\\App\\Controllers\\'.$actionArr[0];
                 $method = $actionArr[1];
 
-                return (new $controller)->$method();
+                return (new $controller)->$method($params);
             }
         }
-        call_user_func_array($this->notFound,[$_SERVER['REQUEST_URI']]);
+        call_user_func_array($this->notFound,[$params['param']]);
     }
 }

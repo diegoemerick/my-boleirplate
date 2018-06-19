@@ -3,21 +3,24 @@ version: '2'
 services:
     web:
         image: nginx:latest
+        environment:
+            - ALLOW_OVERRIDE=true
         ports:
             - "8080:80"
         volumes:
-            - ./src:/2
+            - ./:/app
             - ./site.conf:/etc/nginx/conf.d/default.conf
         networks:
             - code-network
         links:
+          - db
           - php
           - composer
 
     php:
         image: php:fpm
         volumes:
-            - ./src:/2
+            - ./:/app
         networks:
             - code-network
         ports:
@@ -28,8 +31,19 @@ services:
         image: composer/composer:php7
         command: install
         volumes:
-          - ./src:/2
+          - ./:/app
 
+    db:
+        image: mariadb
+        restart: always
+        volumes:
+          - ./mysql:/var/lib/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+        ports:
+          - "8889:3306"
 
 networks:
     code-network:

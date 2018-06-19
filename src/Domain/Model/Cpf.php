@@ -7,20 +7,45 @@ class Cpf
     private $number;
     private $block;
 
-    public function validateNumber($number)
-    {
-        $cpf = preg_replace('/[^0-9]/', '', (string) $number);
-        if (strlen($cpf) != 11)
+    function validateNumber($cpf = null) {
+
+        if(empty($cpf)) {
             return false;
-        for ($i = 0, $j = 10, $sum = 0; $i < 9; $i++, $j--)
-            $sum += $cpf{$i} * $j;
-        $rest = $sum % 11;
-        if ($cpf{9} != ($rest < 2 ? 0 : 11 - $rest))
+        }
+
+        $cpf = preg_replace("/[^0-9]/", "", $cpf);
+        $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
+
+        if (strlen($cpf) != 11) {
             return false;
-        for ($i = 0, $j = 11, $sum = 0; $i < 10; $i++, $j--)
-            $sum += $cpf{$i} * $j;
-        $rest = $sum % 11;
-        return $cpf{10} == ($rest < 2 ? 0 : 11 - $rest);
+        }
+
+        else if ($cpf == '00000000000' ||
+            $cpf == '11111111111' ||
+            $cpf == '22222222222' ||
+            $cpf == '33333333333' ||
+            $cpf == '44444444444' ||
+            $cpf == '55555555555' ||
+            $cpf == '66666666666' ||
+            $cpf == '77777777777' ||
+            $cpf == '88888888888' ||
+            $cpf == '99999999999') {
+            return false;
+        } else {
+
+            for ($t = 9; $t < 11; $t++) {
+
+                for ($d = 0, $c = 0; $c < $t; $c++) {
+                    $d += $cpf{$c} * (($t + 1) - $c);
+                }
+                $d = ((10 * $d) % 11) % 10;
+                if ($cpf{$c} != $d) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
     /**

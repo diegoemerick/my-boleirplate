@@ -2,29 +2,28 @@
 
 namespace Gcpf\App\Controllers;
 
-use Gcpf\Domain\Service\cpfService;
-use Gcpf\Infrastructure\Repository\cpfRepository;
+use Gcpf\Domain\Service\CpfService;
+use Gcpf\Infrastructure\Repository\CpfRepository;
 
 class CpfController
 {
     /**
      * Manage services cpf and repository
-     * @param $number
-     * @return array
+     * @param array $params
      */
-    public function getCpf($number)
+    public function getCpf(array $params)
     {
-        $cpfService = new cpfService();
-        $cpfRepository = new cpfRepository();
+        $cpfService = new CpfService();
+        $cpfRepository = new CpfRepository();
 
-        $stored = $cpfRepository->getCpf($number);
+        $stored = $cpfRepository->getCpf($params['number']);
 
         if (! empty($stored)) {
-            $cpfService->storeCpf($number);
+            $cpfService->storeCpf($params['number']);
         }
 
-        $cpfStored = $cpfRepository->getCpf($number);
-        return $cpfService->getCpf($cpfStored);
+        $cpfStored = $cpfRepository->getCpf($params['number']);
+        echo $cpfService->getCpf($cpfStored);
     }
 
     /**
@@ -39,7 +38,7 @@ class CpfController
         $stored = $cpfRepository->getCpf($number);
         $newRegister = $cpfService->storeCpf($number);
 
-        return $cpfService->getCpf($newRegister);
+        return $cpfService->getCpf($newRegister->getNumber());
     }
 
     public function storeBlackList($number)

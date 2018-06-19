@@ -2,22 +2,22 @@
 
 namespace Gcpf\Domain\Service;
 
-use Gcpf\Domain\Factory\cpfFactory;
-use Gcpf\Domain\Model\cpf;
+use Gcpf\Domain\Factory\CpfFactory;
+use Gcpf\Domain\Model\Cpf;
 
 class CpfService
 {
     /**
      * @param array $data
-     * @return array
+     * @return string
      */
-    public function getCpf(array $data): array
+    public function getCpf(array $data)
     {
-        $cpf = new cpf();
+        $cpf = new Cpf();
         $cpf->setBlock($data['blocked']);
         $cpf->setNumber($data['number']);
 
-        $cpfFactory = new cpfFactory();
+        $cpfFactory = new CpfFactory();
         $response = $cpfFactory->responseCpf($cpf);
 
         return $response;
@@ -25,11 +25,11 @@ class CpfService
 
     /**
      * @param $number
-     * @return cpf
+     * @return Cpf
      */
-    public function storeCpf($number): cpf
+    public function storeCpf($number): Cpf
     {
-        $cpf = new cpf();
+        $cpf = new Cpf();
 
         $cpf->validateNumber($number);
 
@@ -41,26 +41,26 @@ class CpfService
 
     /**
      * @param $number
-     * @return cpfFactory
+     * @return Cpf
      */
-    public function storeBlackListCpf($number): cpfFactory
+    public function storeBlackListCpf($number): Cpf
     {
-        $cpf = new cpfFactory();
-        $cpf->buildStoreBlackList($number);
+        $cpf = new CpfFactory();
+        $cpfBlocked = $cpf->buildStoreBlackList($number);
 
-        return $cpf;
+        return $cpfBlocked;
     }
 
     /**
      * @param $number
-     * @return cpfFactory
+     * @return Cpf
      */
-    public function removeBlackListCpf($number): cpfFactory
+    public function removeBlackListCpf($number): Cpf
     {
-        $cpf = new cpfFactory();
-        $cpf->buildStoreBlackList($number, false);
+        $cpf = new CpfFactory();
+        $cpfFree = $cpf->buildStoreBlackList($number, false);
 
-        return $cpf;
+        return $cpfFree;
     }
 
 }

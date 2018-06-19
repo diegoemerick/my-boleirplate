@@ -13,15 +13,16 @@ class CpfRepository implements CpfRepositoryInterface
         $this->conn = new Connection();
     }
 
-    public function getCpf($cpf)
+    public function getCpf($cpf): array
     {
-        $query = "SELECT * FROM cpf WHERE number = :number";
-
-        $stmt = $this->conn->db->prepare($query);
-        $stmt->bindParam(':number', $cpf);
-        $result = $stmt->execute();
-
-        return $result;
+//        $query = "SELECT * FROM cpf WHERE number = :number";
+//
+//        $stmt = $this->conn->db->prepare($query);
+//        $stmt->bindParam(':number', $cpf);
+//        $result = $stmt->execute();
+//echo $result;
+//        return $result;
+        return [];
     }
 
     public function storeBlackList($data)
