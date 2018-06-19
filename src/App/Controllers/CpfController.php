@@ -28,7 +28,7 @@ class CpfController
 
     /**
      * @param $number
-     * @return array
+     * @return string
      */
     public function removeBlackList($number)
     {
